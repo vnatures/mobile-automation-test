@@ -1,14 +1,40 @@
-maestro-upload:
-  docker:
-     - image: cimg/openjdk:19.0.1
-  steps:
-    - attach_workspace:
-        at: .
-    - run:
-        name: Download and run maestro
-        command: |
-          curl -Ls "https://get.maestro.mobile.dev" | bash
-          export PATH="$PATH":"$HOME/.maestro/bin"
-          maestro cloud \
-          --apiKey $MDEV_API_KEY \
-          path_to_my_app .maestro
+version: 2.1
+orbs:
+  android: circleci/android@2.1.2
+jobs:
+  build-android:
+    executor:
+      name: android/android-docker
+      tag: 2022.08.1
+    steps:
+      - checkout
+      - android/restore-gradle-cache
+      - run:
+          name: Assemble debug build
+          command: |
+            ./gradlew :app:assembleDebug
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  maestro-upload:
+    docker:
+      - image: cimg/openjdk:19.0.1
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Upload to Maestro Cloud
+          command: |
+            curl -Ls "https://get.maestro.mobile.dev" | bash
+            export PATH="$PATH":"$HOME/.maestro/bin"
+            maestro cloud \
+            --apiKey $MDEV_API_KEY \
+            app/build/outputs/apk/debug/app-debug.apk .maestro
+workflows:
+  build-and-upload:
+    jobs:
+      - build-android
+      - maestro-upload:
+          requires:
+            - build-android
