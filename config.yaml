@@ -1,0 +1,14 @@
+maestro-upload:
+  docker:
+     - image: cimg/openjdk:19.0.1
+  steps:
+    - attach_workspace:
+        at: .
+    - run:
+        name: Download and run maestro
+        command: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          export PATH="$PATH":"$HOME/.maestro/bin"
+          maestro cloud \
+          --apiKey $MDEV_API_KEY \
+          path_to_my_app .maestro
