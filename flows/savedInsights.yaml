@@ -1,0 +1,24 @@
+appId: ai.versatile.craneview.staging
+tags:
+  - advanced
+  - saved-insights
+---
+- runFlow: login.yaml
+- tapOn: "Insights"
+- assertVisible: "Saved"
+- tapOn: "Saved"
+- assertVisible: "Long installation: Metal stair"
+- assertVisible: "30 mins longer than similar lifts"
+- tapOn: "Long installation: Metal stair"
+- assertVisible: "43m"
+- assertVisible: "13m"
+- scrollUntilVisible: 
+    element: "No comments here yet!"
+# assertVisible: "No comments here yet"
+# back arrow
+- tapOn:
+    point: "8%,7%"
+- assertNotVisible: "43m"
+- assertNotVisible: "13m"
+- assertVisible: "Long installation: Metal stair"
+- assertVisible: "30 mins longer than similar lifts"
