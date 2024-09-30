@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "mobile-automation-test"
-include ':app'
+include ("app")
