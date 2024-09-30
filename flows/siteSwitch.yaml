@@ -1,0 +1,14 @@
+appId: ai.versatile.craneview.staging
+tags:
+  - advanced
+  - site-switch-test-run
+---
+- runFlow: login.yaml
+- tapOn: "Profile"
+- assertVisible: "Choose a site"
+- tapOn:
+    point: 50%, 30%
+- assertVisible: "My Jobsites"
+- tapOn: "Bellevue 600"
+- assertNotVisible: "My Jobsites"
+- assertVisible: "Bellevue 600"
