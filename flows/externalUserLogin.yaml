@@ -1,0 +1,21 @@
+appId: ai.versatile.craneview.staging
+
+tags: 
+  - external-user-login
+
+---
+
+- launchApp
+- tapOn: "LOG IN"
+- tapOn:
+    id: "username"
+- inputText: "yakir.lavi+report@versatile.ai"
+- tapOn: "Continue"
+- tapOn:
+    id: "password"
+- inputText: "Xvnwhcdo891"
+- "hideKeyboard"
+- tapOn:
+    point: "49%,59%"
+- assertVisible: "Hello, Yakir"
+- assertVisible: "Here’s a Catch up of your site activity"
