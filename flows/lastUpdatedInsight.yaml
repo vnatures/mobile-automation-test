@@ -1,0 +1,13 @@
+appId: ai.versatile.craneview.staging
+tags:
+  - last-updated-insight
+---
+# - runFlow: login.yaml
+- tapOn: "Insights"
+- assertVisible: "Saved"
+- assertVisible: "Unread"
+- assertVisible: "All"
+- scrollUntilVisible: 
+    element: "50 mins lost"
+- tapOn: "50 mins lost"
+- assertVisible: "Last updated by Versatile on August 22"

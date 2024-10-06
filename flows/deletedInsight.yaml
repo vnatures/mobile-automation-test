@@ -1,6 +1,6 @@
 appId: ai.versatile.craneview.staging
 tags:
-  - save-insight
+  - deleted-insight
 ---
 - runFlow: login.yaml
 - tapOn: "Insights"
