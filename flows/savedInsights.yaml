@@ -6,6 +6,8 @@ tags:
 - runFlow: login.yaml
 - tapOn: "Insights"
 - assertVisible: "Saved"
+- assertVisible: "Unread"
+- assertVisible: "All"
 - tapOn: "Saved"
 - assertVisible: "Long installation: Metal stair"
 - assertVisible: "30 mins longer than similar lifts"

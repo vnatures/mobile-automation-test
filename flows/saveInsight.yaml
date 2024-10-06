@@ -1,0 +1,21 @@
+appId: ai.versatile.craneview.staging
+tags:
+  - advanced
+  - save-insight
+---
+- runFlow: login.yaml
+- tapOn: "Insights"
+- assertVisible: "Saved"
+- assertVisible: "Unread"
+- assertVisible: "All"
+- tapOn: 
+    point: 85%, 39%
+- tapOn: "Saved"
+- assertVisible: "Elements removed: Metal Stair"
+- assertVisible: "26 mins lost"
+- tapOn:
+    point: 85%,20%
+- assertNotVisible: "Elements removed: Metal Stair"
+
+
+

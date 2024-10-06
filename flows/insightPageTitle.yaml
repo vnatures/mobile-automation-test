@@ -5,7 +5,7 @@ env:
   PASSWORD: "Xvnwhcdo891"
 
 tags: 
-  - external-user-login
+  - insight-page-title
 ---
 - launchApp
 - tapOn: "LOG IN"
@@ -21,3 +21,5 @@ tags:
     point: "49%,59%"
 - assertVisible: "Hello, Yakir"
 - assertVisible: "Here’s a Catch up of your site activity"
+- tapOn: "Insights"
+- assertVisible: "Insights"
