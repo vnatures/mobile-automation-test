@@ -1,6 +1,6 @@
 appId: ai.versatile.craneview.staging
 tags:
-  - site-switch-test-run
+  - digest-tabs
 ---
 - runFlow: login.yaml
 - tapOn: "Profile"
@@ -11,3 +11,16 @@ tags:
 - tapOn: "Bellevue 600"
 - assertNotVisible: "My Jobsites"
 - assertVisible: "Bellevue 600"
+- tapOn: "Catch Up"
+# tap on date picker
+- tapOn:
+    point: "40%,27%"
+# tap on back arrow
+- doubleTapOn:
+    point: "9%,54%"
+- tapOn: 
+    point: "9%,54%"
+- tapOn: "6"
+- assertVisible: "TC1"
+- assertVisible: "TC2"
+- assertVisible: "Weekly All Site"
