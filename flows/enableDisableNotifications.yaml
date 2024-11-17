@@ -1,0 +1,28 @@
+appId: ai.versatile.craneview.staging
+jsEngine: graaljs
+tags:
+  - enable-disbale-notifications
+
+---
+- runFlow: login.yaml
+- assertVisible: "Profile"
+- tapOn: "Profile"
+- assertVisible: "Notifications"
+- tapOn: "Notifications"
+- assertVisible: "GO TO SETTINGS"
+- tapOn: "GO TO SETTINGS"
+- assertVisible: "All Versatile-S notifications"
+- tapOn: "All Versatile-S notifications"
+- assertVisible: "You haven't allowed notifications from this app"
+- back
+- assertVisible: "Profile"
+- tapOn: "Profile"
+- assertVisible: "Notifications"
+- tapOn: "Notifications"
+- assertVisible: "GO TO SETTINGS"
+- tapOn: "GO TO SETTINGS"
+- assertVisible: "All Versatile-S notifications"
+- tapOn: "All Versatile-S notifications"
+- assertNotVisible: "You haven't allowed notifications from this app"
+- back
+- assertVisible: "Profile"

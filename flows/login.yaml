@@ -8,6 +8,7 @@ tags:
     - login
 ---
 - launchApp
+# Need to figure out how to recognize wether the user is logged in or not (something like if else statment)
 - tapOn: "LOG IN"
 - tapOn:
     id: "username"
