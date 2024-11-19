@@ -1,9 +1,12 @@
 appId: ai.versatile.craneview.staging
+
 tags:
   - advanced
   - saved-insights
+
+onFlowStart:
+  - runFlow: login.yaml
 ---
-- runFlow: login.yaml
 - tapOn: "Insights"
 - assertVisible: "Saved"
 - assertVisible: "Unread"

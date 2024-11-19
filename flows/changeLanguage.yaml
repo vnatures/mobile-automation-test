@@ -1,10 +1,12 @@
 appId: ai.versatile.craneview.staging
-jsEngine: graaljs
+
 tags:
   - change-language
 
+onFlowStart:
+  - runFlow: login.yaml
+  
 ---
-- runFlow: login.yaml
 - assertVisible: "Profile"
 - tapOn: "Profile"
 - assertVisible: "Language (English)"

@@ -1,8 +1,11 @@
 appId: ai.versatile.craneview.staging
+
 tags:
   - site-switch-test-run
+
+onFlowStart:
+  - runFlow: login.yaml
 ---
-- runFlow: login.yaml
 - tapOn: "Profile"
 - assertVisible: "Choose a site"
 - tapOn:

@@ -3,8 +3,9 @@ jsEngine: graaljs
 tags:
   - quick-navigation
 
+onFlowStart:
+  - runFlow: login.yaml
 ---
-- runFlow: login.yaml
 - extendedWaitUntil:
     visible: "TIME ON HOOK" 
     timeout: 10000

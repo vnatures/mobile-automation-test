@@ -1,8 +1,12 @@
 appId: ai.versatile.craneview.staging
+
 tags:
   - digest-tabs
+
+onFlowStart:
+  - runFlow: login.yaml
+
 ---
-- runFlow: login.yaml
 - tapOn: "Profile"
 - assertVisible: "Choose a site"
 - tapOn:

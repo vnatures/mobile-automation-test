@@ -1,10 +1,11 @@
 appId: ai.versatile.craneview.staging
-jsEngine: graaljs
+
 tags:
   - enable-disbale-notifications
 
+onFlowStart:
+  - runFlow: login.yaml
 ---
-- runFlow: login.yaml
 - assertVisible: "Profile"
 - tapOn: "Profile"
 - assertVisible: "Notifications"

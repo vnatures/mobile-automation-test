@@ -1,15 +1,15 @@
 appId: ai.versatile.craneview.staging
 
 tags:
-  - advanced
-  - empty-unread-insights
+  - unread-insight
 
 onFlowStart:
   - runFlow: login.yaml
 ---
+- assertVisible: "3083 Walnut"
+- assertVisible: "Insights"
 - tapOn: "Insights"
 - assertVisible: "Unread"
 - tapOn: "Unread"
 - assertVisible: "You made a lot of progress"
 - assertVisible: "You checked everything off your list."
-

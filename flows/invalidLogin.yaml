@@ -1,7 +1,7 @@
 appId: ai.versatile.craneview.staging
 
 env:
-    INVALID_USER: "yakir.lavi+report@versatile.ai"
+    INVALID_USER: "yakir.lavi+report1@versatile.ai"
     PASSWORD: "Xvnwhcdo891"
 ---
 - launchApp

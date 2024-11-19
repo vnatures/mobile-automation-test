@@ -3,22 +3,24 @@ appId: ai.versatile.craneview.staging
 env:
     INTERNAL_USER: yakir.lavi+internal@versatile.ai
     PASSWORD: "Xvnwhcdo891"
-
 tags: 
     - login
 ---
 - launchApp
-# Need to figure out how to recognize wether the user is logged in or not (something like if else statment)
-- tapOn: "LOG IN"
-- tapOn:
-    id: "username"
-- inputText: ${INTERNAL_USER}
-- tapOn: "Continue"
-- tapOn:
-    id: "password"
-- inputText: ${PASSWORD}
-- "hideKeyboard"
-- tapOn:
-    point: "49%,59%"
-- assertVisible: "Hello, Yakir"
-- assertVisible: "Here’s a Catch up of your site activity"
+- runFlow:
+    when:
+      visible: "LOG IN"
+    commands:
+      - tapOn: "LOG IN"
+      - tapOn:
+            id: "username"
+      - inputText: ${INTERNAL_USER}
+      - tapOn: "Continue"
+      - tapOn:
+            id: "password"
+      - inputText: ${PASSWORD}
+      - "hideKeyboard"
+      - tapOn:
+            point: "49%,59%"
+      - assertVisible: "Hello, Yakir"
+      - assertVisible: "Here’s a Catch up of your site activity"
