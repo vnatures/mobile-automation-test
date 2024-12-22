@@ -1,0 +1,38 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - event-columns
+
+onFlowStart:
+  - runFlow: login.yaml
+---
+- assertVisible: "Calendar"
+- tapOn: "Calendar"
+- assertVisible: "Today"
+- tapOn:
+    point: "90%,79%"
+- tapOn: 
+    point: 50%,83%
+- tapOn: "Add title"
+- inputText: "Test event"
+- tapOn: "Select trade"
+- runFlow: 
+    when:
+      notVisible: "Acousti"
+    commands:
+      - tapOn: "General"
+- tapOn: "Add details"
+- inputText: "Test event"
+# Save the event
+- tapOn: "SAVE"
+- scrollUntilVisible: 
+    element:
+      text: ".*Test event.*"
+- tapOn: ".*Test event.*"
+- assertVisible: ".*Test event.*"
+# Delete the event
+- tapOn:
+    point: "91%,5%" 
+- assertVisible: "DELETE"
+- tapOn: "DELETE"
+- assertNotVisible: ".*Test event.*"
