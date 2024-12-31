@@ -1,7 +1,7 @@
 appId: ai.versatile.craneview.staging
 
 env:
-    INTERNAL_USER: yakir.lavi+internal@versatile.ai
+    INTERNAL_USER: yakir.lavi+planuser@versatile.ai
     PASSWORD: "Xvnwhcdo891"
 tags: 
     - login

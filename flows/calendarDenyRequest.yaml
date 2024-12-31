@@ -1,0 +1,81 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - event-columns
+
+onFlowStart:
+  - runFlow: planUserLogin.yaml
+---
+- assertVisible: "Calendar"
+- tapOn: "Calendar"
+- assertVisible: "Today"
+# Clicking on '+' button
+- tapOn:
+    point: "90%,79%"
+- assertVisible: "Resource activity"
+# Clicking on resource activity option
+- tapOn: 
+    point: "90%,67%"
+- assertVisible: "Add title"
+- tapOn: "Add title"
+- inputText: "Test event"
+- tapOn: "Select trade"
+- runFlow:
+    when:
+      notVisible: "Acousti"
+    commands:
+      - assertVisible: "General"
+      - tapOn: "General"
+- runFlow:
+    when:
+      visible: "Acousti"
+    commands:
+      - assertVisible: "Acousti"
+      - tapOn: "Acousti"
+- tapOn: "Add details"
+- inputText: "Test event"
+- repeat:
+    while: 
+      visible: "SEND REQUEST"
+    commands: 
+      - tapOn: "SEND REQUEST"
+- assertVisible: "First event*."
+- tapOn: "First event*."
+- assertVisible: ".*Test event*."
+- tapOn: ".*Test event*."
+- assertVisible: "Pending approval"
+- back
+- assertVisible: "Profile"
+- runFlow: logout.yaml
+- runFlow: login.yaml
+- tapOn: "Profile"
+- assertVisible: "Choose a site"
+- tapOn:
+    point: 50%, 30%
+- scrollUntilVisible: 
+    element:
+      text: "Aventura"
+- tapOn: "Aventura"
+- assertVisible: "Calendar"
+- tapOn: "Calendar"
+- assertVisible: "Tower Crane"
+- tapOn: "Tower Crane"
+- scrollUntilVisible: 
+    element: 
+      text: ".*Test event*."
+- tapOn: ".*Test event*."
+- assertVisible: "Approve?"
+- assertVisible: ".*YES"
+- assertVisible: ".*NO"
+- tapOn: ".*NO"
+- assertVisible: "Deny request?"
+- assertVisible: "Add a note here"
+- tapOn: "Add a note here"
+- inputText: "Hello World!"
+- "hideKeyboard"
+- assertVisible: "CANCEL"
+- assertVisible: "DENY"
+- tapOn: "DENY"
+- assertVisible: ".*Test event*."
+- tapOn: ".*Test event*."
+- assertVisible: ".*Denied by*."
