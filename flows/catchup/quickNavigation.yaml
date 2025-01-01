@@ -1,0 +1,22 @@
+appId: ai.versatile.craneview.staging
+jsEngine: graaljs
+tags:
+  - quick-navigation
+
+onFlowStart:
+  - runFlow: ../login/login.yaml
+---
+- extendedWaitUntil:
+    visible: "TIME ON HOOK" 
+    timeout: 10000
+- tapOn:
+    point: "91%,27%"
+- evalScript: ${console.log('Quick Navigation button was pressed')}
+- assertVisible: "Time on Hook"
+- assertVisible: "Prefab installation"
+- assertVisible: "Steel installations"
+- tapOn: "Prefab installation"
+- evalScript: ${console.log('Prefab installation button was pressed')}
+- assertVisible: "PREFAB installation"
+- assertVisible: "Daily tracker, Crane 1"
+- assertVisible: "VIEW LIFTS"

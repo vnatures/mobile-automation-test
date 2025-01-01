@@ -1,0 +1,27 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - event-creation-general
+---
+- assertVisible: "Calendar"
+- tapOn: "Calendar"
+- assertVisible: "Today"
+- scrollUntilVisible:
+    element: 
+      text: "8 PM"
+- tapOn:
+    point: "90%,67%"
+- tapOn: 
+    point: 50%,83%
+- tapOn: "Add title"
+- inputText: "Test event"
+- tapOn: "Select trade"
+- runFlow: 
+    when:
+      notVisible: "Acousti"
+    commands:
+      - tapOn: "General"
+- tapOn: "Add details"
+- inputText: "Test event"
+# Save the event
+- tapOn: "SAVE"

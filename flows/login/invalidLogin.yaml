@@ -1,0 +1,19 @@
+appId: ai.versatile.craneview.staging
+
+env:
+    INVALID_USER: "yakir.lavi+report1@versatile.ai"
+    PASSWORD: "Xvnwhcdo891"
+---
+- launchApp
+- tapOn: "LOG IN"
+- tapOn:
+    id: "username"
+- inputText: ${INVALID_USER}
+- tapOn: "Continue"
+- tapOn:
+    id: "password"
+- inputText: ${PASSWORD}
+- "hideKeyboard"
+- tapOn:
+    point: "49%,59%"
+- assertVisible: "Wrong username or password"

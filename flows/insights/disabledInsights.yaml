@@ -1,0 +1,22 @@
+appId: ai.versatile.craneview.staging
+
+env:
+  EX_USER_PLAN_LIVE: "yakir.lavi+emptystate2@versatile.ai"
+  PASSWORD: "Xvnwhcdo891"
+
+tags:
+  - no-insights
+---
+- launchApp
+- tapOn: "LOG IN"
+- tapOn:
+    id: "username"
+- inputText:  ${EX_USER_PLAN_LIVE}
+- tapOn: "Continue"
+- tapOn:
+    id: "password"
+- inputText: ${PASSWORD}
+- "hideKeyboard"
+- tapOn:
+    point: "49%,59%"
+- assertNotVisible: "Insights"

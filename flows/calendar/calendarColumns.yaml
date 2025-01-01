@@ -1,0 +1,33 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - calendar-columns
+
+onFlowStart:
+  - runFlow: ../login/login.yaml
+---
+- tapOn: "Profile"
+- runFlow: 
+    when: 
+        notVisible: "3083 Walnut"
+    commands:
+    - assertVisible: "Choose a site"
+    - tapOn:
+        point: 50%, 30%
+    - assertVisible: "My Jobsites"
+    - scrollUntilVisible: 
+        element: 
+            text: "3083 Walnut"
+    - tapOn: "3083 Walnut"
+- assertVisible: "Calendar"
+- tapOn: "Calendar"
+- assertVisible: "Maria Test"
+- tapOn: "Maria Test"
+- runFlow: calendar/eventCreationGeneral.yaml
+- assertVisible: ".*Test event*."
+- tapOn: ".*Test event*."
+- tapOn:
+    point: "91%,5%"
+- assertVisible: "Delete event"
+- tapOn: "DELETE"
+- assertNotVisible: ".*Test event*."

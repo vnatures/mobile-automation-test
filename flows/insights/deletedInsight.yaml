@@ -1,0 +1,24 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - deleted-insight
+
+onFlowStart:
+  - runFlow: ../login/login.yaml
+---
+- tapOn: "Insights"
+- assertVisible: "Saved"
+- assertVisible: "Unread"
+- assertVisible: "All"
+- scrollUntilVisible: 
+    element: "Wed, July 3"
+- assertVisible: "Installation failed"
+- tapOn: "Installation failed"
+- assertVisible: "Insight deleted"
+- assertVisible: "support@versatile.ai"
+- assertVisible: "BACK TO ALL INSIGHTS"
+- tapOn: "BACK TO ALL INSIGHTS"
+- tapOn:
+    point: 85%,71%
+- assertVisible: "Installation failed"
+- assertVisible: "Wed, July 3"

@@ -1,0 +1,14 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - event-columns
+
+onFlowStart:
+  - runFlow: ../login/login.yaml
+---
+- assertVisible: "Calendar"
+- tapOn: "Calendar"
+- assertVisible: "Today"
+- tapOn:
+    point: "90%,79%"
+# TO BE DONE
