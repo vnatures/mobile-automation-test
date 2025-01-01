@@ -1,0 +1,19 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - change-job-title
+
+onFlowStart:
+  - runFlow: ../login/login.yaml
+---
+- tapOn: "Profile"
+- assertVisible: "Terms of service"
+- tapOn: "Terms of service"
+- runFlow:
+    when:
+      visible: "Accept All"
+    commands:
+      - tapOn: "Accept All"
+- assertVisible: "Definitions"
+- back
+- assertVisible: "Choose a site"
