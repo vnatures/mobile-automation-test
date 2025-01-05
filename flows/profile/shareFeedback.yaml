@@ -1,0 +1,15 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - share-feedback
+
+onFlowStart:
+  - runFlow: ../login/login.yaml
+---
+- tapOn: "Profile"
+- assertVisible: "Share Feedback"
+- tapOn: "Share Feedback"
+- assertVisible: ".*Versatile Mobile App*."
+- assertVisible: ".*Help us make Versatile better for everyone*."
+- back
+- assertVisible: "Choose a site"
