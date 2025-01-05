@@ -1,0 +1,31 @@
+appId: ai.versatile.craneview.staging
+
+tags:
+  - live-screen
+
+onFlowStart:
+  - runFlow: ../login/login.yaml
+---
+- tapOn: "Profile"
+- assertVisible: "Choose a site"
+- runFlow: 
+    when: 
+      notVisible: "Cnaan Kiryat Ono – B5"
+    commands:
+      - tapOn: 
+          point: 50%, 30%
+      - scrollUntilVisible: 
+          element:
+           text: "Cnaan Kiryat Ono - B5"
+      - tapOn: "Cnaan Kiryat Ono - B5"
+- assertVisible: "Live"
+- tapOn: "Live"
+- assertVisible: "CRANE 2"
+- assertVisible: "CRANE 5"
+- tapOn: "CRANE 2"
+- assertVisible: "Crane 2"
+- assertVisible: "TODAY"
+- assertVisible: "Live"
+- assertVisible: "Battery 1"
+- assertVisible: "Battery 2"
+
