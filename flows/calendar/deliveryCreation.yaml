@@ -4,7 +4,7 @@ tags:
   - event-columns
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
 ---
 - assertVisible: "Calendar"
 - tapOn: "Calendar"

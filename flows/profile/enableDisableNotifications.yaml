@@ -4,7 +4,7 @@ tags:
   - enable-disbale-notifications
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
 ---
 - assertVisible: "Profile"
 - tapOn: "Profile"

@@ -1,23 +1,62 @@
 appId: ai.versatile.craneview.staging
 
 env:
-  EX_USER: "yakir.lavi+report@versatile.ai"
-  PASSWORD: "Xvnwhcdo891"
+  EXTERNAL_USER: "yakir.lavi+ext_auto@versatile.ai"
+  PASSWORD: "Test123!"
 
 tags: 
   - external-user-login
 ---
 - launchApp
-- tapOn: "LOG IN"
-- tapOn:
-    id: "username"
-- inputText: ${EX_USER}
-- tapOn: "Continue"
-- tapOn:
-    id: "password"
-- inputText: ${PASSWORD}
-- "hideKeyboard"
-- tapOn:
-    point: "49%,59%"
-- assertVisible: "Hello, Yakir"
-- assertVisible: "Here’s a Catch up of your site activity"
+- runFlow: 
+    file: "../login/logout.yaml"
+    when:
+      visible: "Profile"
+- runFlow:
+    when:
+      visible: "LOG IN"
+    commands:
+      - tapOn: "LOG IN"
+      - tapOn: "Username or email address"
+      - inputText: 
+          label: Input the user's mail.
+          text: ${EXTERNAL_USER}
+      - runFlow:
+          when:
+            platform: "ios"
+          commands:
+            - tapOn: "Return"
+      - runFlow:
+          when:
+            platform: "android"
+          commands:
+            - "hideKeyboard"
+      - tapOn: "Continue"
+      - runFlow:
+          when:
+            platform: "ios"
+          commands:
+            - tapOn: "Password"
+      - runFlow:
+          when:
+            platform: "android"
+          commands:
+            - waitForAnimationToEnd
+            - tapOn: "Password"
+            - waitForAnimationToEnd
+      - inputText: 
+          label: Input the user's password.
+          text: ${PASSWORD}
+      - runFlow:
+          when:
+            platform: "ios"
+          commands:
+            - tapOn:
+                point: "50%,10%"
+      - runFlow:
+          when:
+            platform: "android"
+          commands:
+            - "hideKeyboard"
+      - tapOn: "Continue"
+      - assertVisible: "Profile"

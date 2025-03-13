@@ -5,7 +5,7 @@ tags:
   - empty-unread-insights
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
 ---
 - tapOn: "Insights"
 - assertVisible: "Unread"

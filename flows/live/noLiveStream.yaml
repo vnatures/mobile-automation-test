@@ -4,21 +4,21 @@ tags:
   - no-live-stream
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
 ---
 - tapOn: "Profile"
 - assertVisible: "Choose a site"
 - runFlow: 
     when: 
-      notVisible: "3083 Walnut"
+      notVisible: "Aventura"
     commands:
       - tapOn: 
           point: 50%, 30%
       - scrollUntilVisible: 
           element:
-           text: "3083 Walnut"
-      - tapOn: "3083 Walnut"
+           text: "Aventura"
+      - tapOn: "Aventura"
 - assertVisible: "Live"
 - tapOn: "Live"
 - assertVisible: "No live stream for this site"
-- assertVisible: "Versatile’s devices are no longer transmitting on your jobsite. If that’s unexpected, contact us at support@versatile.ai"
+- assertVisible: "Versatile's devices are no longer transmitting on your jobsite. If that's unexpected, contact us at support@versatile.ai"

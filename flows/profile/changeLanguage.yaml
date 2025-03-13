@@ -4,7 +4,7 @@ tags:
   - change-language
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
   
 ---
 - assertVisible: "Profile"

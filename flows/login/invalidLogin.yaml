@@ -2,18 +2,59 @@ appId: ai.versatile.craneview.staging
 
 env:
     INVALID_USER: "yakir.lavi+report1@versatile.ai"
-    PASSWORD: "Xvnwhcdo891"
+    PASSWORD: "Xvnwhcdo8911"
 ---
 - launchApp
-- tapOn: "LOG IN"
-- tapOn:
-    id: "username"
-- inputText: ${INVALID_USER}
-- tapOn: "Continue"
-- tapOn:
-    id: "password"
-- inputText: ${PASSWORD}
-- "hideKeyboard"
-- tapOn:
-    point: "49%,59%"
-- assertVisible: "Wrong username or password"
+- launchApp
+- runFlow: 
+    file: "../login/logout.yaml"
+    when:
+      visible: "Profile"
+- runFlow:
+    when:
+      visible: "LOG IN"
+    commands:
+      - tapOn: "LOG IN"
+      - tapOn: "Username or email address"
+      - inputText: 
+          label: Input the user's mail.
+          text: ${INVALID_USER}
+      - runFlow:
+          when:
+            platform: "ios"
+          commands:
+            - tapOn: "Return"
+      - runFlow:
+          when:
+            platform: "android"
+          commands:
+            - "hideKeyboard"
+      - tapOn: "Continue"
+      - runFlow:
+          when:
+            platform: "ios"
+          commands:
+            - tapOn: "Password"
+      - runFlow:
+          when:
+            platform: "android"
+          commands:
+            - waitForAnimationToEnd
+            - tapOn: "Password"
+            - waitForAnimationToEnd
+      - inputText: 
+          label: Input the user's password.
+          text: ${PASSWORD}
+      - runFlow:
+          when:
+            platform: "ios"
+          commands:
+            - tapOn:
+                point: "50%,10%"
+      - runFlow:
+          when:
+            platform: "android"
+          commands:
+            - "hideKeyboard"
+      - tapOn: "Continue"
+      - assertVisible: "Wrong username or password"

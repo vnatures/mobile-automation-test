@@ -3,7 +3,6 @@ tags:
   - advanced
   - logout-test-run
 ---
-- runFlow: login.yaml
 - tapOn: "Profile"
 - scrollUntilVisible:
     element: "Log out"

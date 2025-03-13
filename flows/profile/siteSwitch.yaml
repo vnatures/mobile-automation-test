@@ -4,7 +4,7 @@ tags:
   - site-switch-test-run
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
 ---
 - tapOn: "Profile"
 - assertVisible: "Choose a site"

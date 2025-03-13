@@ -1,7 +1,7 @@
 appId: ai.versatile.craneview.staging
 
 env:
-    PLAN_USER: yakir.lavi+plan_auto@versatile.ai
+    INTERNAL_USER: yakir.lavi+int_auto@versatile.ai
     PASSWORD: "Test123!"
 tags: 
     - login
@@ -19,7 +19,7 @@ tags:
       - tapOn: "Username or email address"
       - inputText: 
           label: Input the user's mail.
-          text: ${PLAN_USER}
+          text: ${INTERNAL_USER}
       - runFlow:
           when:
             platform: "ios"

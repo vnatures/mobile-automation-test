@@ -44,7 +44,7 @@ onFlowStart:
 - back
 - assertVisible: "Profile"
 - runFlow: ../login/logout.yaml
-- runFlow: ../login/login.yaml
+- runFlow: ../login/internalLogin.yaml
 - tapOn: "Profile"
 - assertVisible: "Choose a site"
 - tapOn:

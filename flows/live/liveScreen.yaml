@@ -4,26 +4,25 @@ tags:
   - live-screen
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
 ---
 - tapOn: "Profile"
 - assertVisible: "Choose a site"
 - runFlow: 
     when: 
-      notVisible: "Cnaan Kiryat Ono – B5"
+      notVisible: "Aventura"
     commands:
       - tapOn: 
           point: 50%, 30%
       - scrollUntilVisible: 
           element:
-           text: "Cnaan Kiryat Ono - B5"
-      - tapOn: "Cnaan Kiryat Ono - B5"
+           text: "Aventura"
+      - tapOn: "Aventura"
 - assertVisible: "Live"
 - tapOn: "Live"
-- assertVisible: "CRANE 2"
-- assertVisible: "CRANE 5"
-- tapOn: "CRANE 2"
-- assertVisible: "Crane 2"
+- assertVisible: "RT"
+- tapOn: "RT"
+- assertVisible: "RT"
 - assertVisible: "TODAY"
 - assertVisible: "Live"
 - assertVisible: "Battery 1"

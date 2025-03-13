@@ -5,7 +5,7 @@ tags:
   - saved-insights
 
 onFlowStart:
-  - runFlow: ../login/login.yaml
+  - runFlow: ../login/internalLogin.yaml
 ---
 - tapOn: "Insights"
 - assertVisible: "Saved"
