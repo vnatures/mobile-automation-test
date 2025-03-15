@@ -3,6 +3,16 @@ tags:
   - advanced
   - logout-test-run
 ---
+- runFlow:
+    when:
+      notVisible: "Profile"      
+    commands:
+      - launchApp
+- runFlow:
+    when:
+      visible: "LOG IN"
+    commands:
+      - runFlow: loginSteps.yaml
 - tapOn: "Profile"
 - scrollUntilVisible:
     element: "Log out"

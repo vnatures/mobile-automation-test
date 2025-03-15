@@ -41,7 +41,8 @@ tags:
             platform: "android"
           commands:
             - waitForAnimationToEnd
-            - tapOn: "Password"
+            - assertVisible: "Password*"
+            - tapOn: "Password*"
             - waitForAnimationToEnd
       - inputText: 
           label: Input the user's password.
