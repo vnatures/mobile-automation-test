@@ -7,18 +7,7 @@ env:
 tags: 
   - insight-page-title
 ---
-- launchApp
-- tapOn: "LOG IN"
-- tapOn:
-    id: "username"
-- inputText: ${EX_USER}
-- tapOn: "Continue"
-- tapOn:
-    id: "password"
-- inputText: ${PASSWORD}
-- "hideKeyboard"
-- tapOn:
-    point: "49%,59%"
+- runFlow: ../login/internalLogin.yaml
 - assertVisible: "Hello, Yakir"
 - assertVisible: "Here’s a Catch up of your site activity"
 - tapOn: "Insights"

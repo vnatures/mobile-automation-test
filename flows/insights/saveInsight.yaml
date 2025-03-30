@@ -7,18 +7,23 @@ tags:
 onFlowStart:
   - runFlow: ../login/internalLogin.yaml
 ---
+- tapOn: "Profile"
+- tapOn: "Choose a site"
+- tapOn:
+    point: "50%, 30%"
+- scrollUntilVisible: 
+    element: "Aventura" 
+- tapOn: "Aventura"
 - tapOn: "Insights"
 - assertVisible: "Saved"
 - assertVisible: "Unread"
 - assertVisible: "All"
+- tapOn: "All"
+# Save the insight star icon
 - tapOn: 
-    point: 85%, 39%
+    point: "87%,19%"
 - tapOn: "Saved"
-- assertVisible: "Elements removed: Metal Stair"
-- assertVisible: "26 mins lost"
-- tapOn:
-    point: 85%,20%
-- assertNotVisible: "Elements removed: Metal Stair"
+- assertVisible: "Long installation: Steel Beam"
 
 
 

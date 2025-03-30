@@ -11,6 +11,6 @@ onFlowStart:
 - tapOn:
     point: 50%, 30%
 - assertVisible: "My Jobsites"
-- tapOn: "Bellevue 600"
+- tapOn: "CCNI"
 - assertNotVisible: "My Jobsites"
-- assertVisible: "Bellevue 600"
+- assertVisible: "CCNI"

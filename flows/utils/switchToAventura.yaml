@@ -1,0 +1,10 @@
+ appId: ai.versatile.craneview.staging
+---
+- tapOn: "Profile"
+- tapOn: "Choose a site"
+- tapOn:
+    point: "50%, 30%"
+- scrollUntilVisible: 
+    element: "Aventura"
+    timeout: 20000 
+- tapOn: "Aventura"

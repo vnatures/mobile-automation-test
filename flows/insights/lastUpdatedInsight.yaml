@@ -6,11 +6,13 @@ tags:
 onFlowStart:
   - runFlow: ../login/internalLogin.yaml
 ---
+- runFlow:
+    file: "../utils/switchToAventura.yaml"
 - tapOn: "Insights"
 - assertVisible: "Saved"
 - assertVisible: "Unread"
 - assertVisible: "All"
 - scrollUntilVisible: 
-    element: "50 mins lost"
-- tapOn: "50 mins lost"
-- assertVisible: "Last updated by Versatile on August 22"
+    element: "35 mins longer than similar lifts"
+- tapOn: "35 mins longer than similar lifts"
+- assertVisible: "Last updated by Versatile on January 23, 2025"

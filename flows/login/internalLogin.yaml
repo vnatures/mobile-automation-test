@@ -6,57 +6,55 @@ env:
 tags: 
     - login
 ---
-- launchApp
-- runFlow: 
-    file: "../login/logout.yaml"
+- launchApp:
+    clearState: true
+
+- runFlow:
     when:
       visible: "Profile"
+    file: "../login/logout.yaml"
+
 - runFlow:
     when:
       visible: "LOG IN"
     commands:
       - tapOn: "LOG IN"
-      - tapOn: "Username or email address"
-      - inputText: 
-          label: Input the user's mail.
-          text: ${INTERNAL_USER}
       - runFlow:
           when:
-            platform: "ios"
+            visible: "Username or email address"
           commands:
-            - tapOn: "Return"
-      - runFlow:
-          when:
-            platform: "android"
-          commands:
-            - "hideKeyboard"
-      - tapOn: "Continue"
-      - runFlow:
-          when:
-            platform: "ios"
-          commands:
-            - tapOn: "Password"
-      - runFlow:
-          when:
-            platform: "android"
-          commands:
-            - waitForAnimationToEnd
-            - assertVisible: "Password*"
-            - tapOn: "Password*"
-            - waitForAnimationToEnd
-      - inputText: 
-          label: Input the user's password.
-          text: ${PASSWORD}
-      - runFlow:
-          when:
-            platform: "ios"
-          commands:
-            - tapOn:
-                point: "50%,10%"
-      - runFlow:
-          when:
-            platform: "android"
-          commands:
-            - "hideKeyboard"
-      - tapOn: "Continue"
-      - assertVisible: "Profile"
+            - tapOn: "Username or email address"
+            - inputText: ${INTERNAL_USER}
+            - runFlow:
+                when:
+                  platform: IOS
+                commands:
+                  - tapOn: "Return"
+            - runFlow:
+                when:
+                  platform: ANDROID
+                commands:
+                  - pressKey: enter
+            - tapOn: "Continue"
+            - runFlow:
+                when:
+                  platform: IOS
+                commands:
+                  - tapOn: "Password"
+            - runFlow:
+                when:
+                  platform: ANDROID
+                commands:
+                 - inputText: ${PASSWORD}
+            - runFlow:
+                when:
+                  platform: IOS
+                commands:
+                  - tapOn: "Return"
+            - runFlow:
+                when:
+                  platform: ANDROID
+                commands:
+                  - tapOn: "Continue"
+- assertVisible: "Profile"
+

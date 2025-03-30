@@ -9,7 +9,7 @@ onFlowStart:
 - tapOn: "Profile"
 - runFlow: 
     when: 
-        notVisible: "3083 Walnut"
+       notVisible: "3083 Walnut"
     commands:
     - assertVisible: "Choose a site"
     - tapOn:

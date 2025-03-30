@@ -5,17 +5,19 @@ tags:
 
 onFlowStart:
   - runFlow: ../login/planUserLogin.yaml
+  - runFlow: ../utils/switchToAventura.yaml
 ---
 - assertVisible: "Calendar"
 - tapOn: "Calendar"
 - assertVisible: "Today"
+- assertVisible: "Deliveries"
+- tapOn: "Deliveries"
 # Clicking on '+' button
 - tapOn:
-    point: "90%,79%"
-- assertVisible: "Resource activity"
+    point: "90%,85%"
+- assertVisible: "Request resource"
 # Clicking on resource activity option
-- tapOn: 
-    point: "90%,67%"
+- tapOn: "Request resource"
 - assertVisible: "Add title"
 - tapOn: "Add title"
 - inputText: "Test event"
@@ -32,27 +34,54 @@ onFlowStart:
     commands:
       - assertVisible: "Acousti"
       - tapOn: "Acousti"
-- tapOn: "Add details"
+- assertVisible: "Select required resources"
+- tapOn: "Select required resources"
+- assertVisible: "Tower Crane"
+- tapOn: "Tower Crane"
+- tapOn: "DONE"
+- assertVisible: "Add additional information here"
+- tapOn: "Add additional information here"
 - inputText: "Test event"
 - assertVisible: "SEND REQUEST"
-- doubleTapOn: "SEND REQUEST"
-- assertVisible: "First event*."
-- tapOn: "First event*."
-- assertVisible: ".*Test event*."
-- tapOn: ".*Test event*."
+- tapOn: "SEND REQUEST"
+- tapOn: "Tower Crane"
+- runFlow:
+    when:
+      visible: "First event*."
+    commands:
+      - tapOn: "First event*."
+      - assertVisible: ".*Test event*."
+      - tapOn: ".*Test event*."
+- runFlow:
+    when:
+      notVisible: "First event*."
+    commands:
+      - runFlow:
+          when:
+            notVisible: ".*Test event*."
+          commands:
+            - scrollUntilVisible:
+                element:
+                  text: ".*Test event*."
+                direction: UP
+            - runFlow:
+                when:
+                  notVisible: ".*Test event*."
+                commands:
+                  - scrollUntilVisible:
+                      element:
+                        text: ".*Test event*."
+                      direction: DOWN
+      - assertVisible: ".*Test event*."
+      - tapOn: ".*Test event*."
+# - assertVisible: "*Test event*."
+# - tapOn: ".*Test event*."
 - assertVisible: "Pending approval"
 - back
 - assertVisible: "Profile"
 - runFlow: ../login/logout.yaml
 - runFlow: ../login/internalLogin.yaml
-- tapOn: "Profile"
-- assertVisible: "Choose a site"
-- tapOn:
-    point: 50%, 30%
-- scrollUntilVisible: 
-    element:
-      text: "Aventura"
-- tapOn: "Aventura"
+- runFlow: ../utils/switchToAventura.yaml
 - assertVisible: "Calendar"
 - tapOn: "Calendar"
 - assertVisible: "Tower Crane"
@@ -62,9 +91,11 @@ onFlowStart:
       text: ".*Test event*."
 - tapOn: ".*Test event*."
 - assertVisible: "Approve?"
-- assertVisible: ".*YES"
-- assertVisible: ".*NO"
-- tapOn: ".*YES"
+- assertVisible: ".*APPROVE"
+- assertVisible: ".*REJECT"
+- tapOn: ".*APPROVE"
 - assertVisible: ".*Test event*."
 - tapOn: ".*Test event*."
-- assertVisible: ".*Approved by*."
+- assertVisible: ".*Approved by Yakir Lavi"
+- assertVisible: ".*Tower Crane*."
+- assertVisible: ".*Test event*."

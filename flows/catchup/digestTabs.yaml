@@ -5,26 +5,14 @@ tags:
 
 onFlowStart:
   - runFlow: ../login/internalLogin.yaml
+  - runFlow: ../utils/switchToAventura.yaml
 
 ---
-- tapOn: "Profile"
-- assertVisible: "Choose a site"
-- tapOn:
-    point: 50%, 30%
-- assertVisible: "My Jobsites"
-- tapOn: "Bellevue 600"
-- assertNotVisible: "My Jobsites"
-- assertVisible: "Bellevue 600"
+- assertVisible: "Catch Up"
 - tapOn: "Catch Up"
 # tap on date picker
-- tapOn:
-    point: "40%,27%"
-# tap on back arrow
-- doubleTapOn:
-    point: "9%,54%"
-- tapOn: 
-    point: "9%,54%"
-- tapOn: "6"
-- assertVisible: "TC1"
-- assertVisible: "TC2"
-- assertVisible: "Weekly All Site"
+- assertVisible: "THURSDAY, November 14, 2024"
+- assertVisible: "Daily activity"
+- assertVisible: "Weekly summary"
+- tapOn: "Weekly summary"
+- assertVisible: "No data for this day."

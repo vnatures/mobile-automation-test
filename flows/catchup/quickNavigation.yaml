@@ -5,7 +5,9 @@ tags:
 
 onFlowStart:
   - runFlow: ../login/internalLogin.yaml
+  - runFlow: ../utils/switchToAventura.yaml
 ---
+- tapOn: "Catch up"
 - extendedWaitUntil:
     visible: "TIME ON HOOK" 
     timeout: 10000
@@ -13,10 +15,9 @@ onFlowStart:
     point: "91%,27%"
 - evalScript: ${console.log('Quick Navigation button was pressed')}
 - assertVisible: "Time on Hook"
-- assertVisible: "Prefab installation"
-- assertVisible: "Steel installations"
-- tapOn: "Prefab installation"
-- evalScript: ${console.log('Prefab installation button was pressed')}
-- assertVisible: "PREFAB installation"
-- assertVisible: "Daily tracker, Crane 1"
+- assertVisible: "Tower Crane"
+- assertVisible: "DAILY ACTIVITY"
+- tapOn: "Tower Crane"
+- assertVisible: "TIME ON HOOK"
+- assertVisible: "Tower Crane"
 - assertVisible: "VIEW LIFTS"

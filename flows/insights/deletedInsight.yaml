@@ -6,12 +6,19 @@ tags:
 onFlowStart:
   - runFlow: ../login/internalLogin.yaml
 ---
+- tapOn: "Profile"
+- assertVisible: "Choose a site"
+- tapOn:
+    point: 50%, 30%
+- scrollUntilVisible: 
+    element: "3083 Walnut"
+- tapOn: "3083 Walnut"
 - tapOn: "Insights"
 - assertVisible: "Saved"
 - assertVisible: "Unread"
 - assertVisible: "All"
 - scrollUntilVisible: 
-    element: "Wed, July 3"
+    element: "29 mins lost"
 - assertVisible: "Installation failed"
 - tapOn: "Installation failed"
 - assertVisible: "Insight deleted"
@@ -21,4 +28,3 @@ onFlowStart:
 - tapOn:
     point: 85%,71%
 - assertVisible: "Installation failed"
-- assertVisible: "Wed, July 3"

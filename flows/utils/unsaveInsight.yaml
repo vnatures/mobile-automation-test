@@ -1,0 +1,5 @@
+appId: ai.versatile.craneview.staging
+---
+- tapOn:
+    point: "87%,19%"
+- assertNotVisible: "Long installation: Steel Beam"

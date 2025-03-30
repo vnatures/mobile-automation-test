@@ -10,10 +10,9 @@ onFlowStart:
 - tapOn: "Profile"
 - scrollUntilVisible:
     element: 
-      text: ".*Powered by Versatile.ai*."
-- tapOn: 
-    text: "Powered by Versatile.ai"
-    point: "63%, 77%"
+      text: "Licenses"
+- tapOn:
+    point: "56%,81%"
 - assertVisible: ".*Control Your Jobsite with Actionable Insights*."
 - back
 - assertVisible: "Account settings"

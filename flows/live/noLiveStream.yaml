@@ -10,15 +10,15 @@ onFlowStart:
 - assertVisible: "Choose a site"
 - runFlow: 
     when: 
-      notVisible: "Aventura"
+      notVisible: "Versatile Demo"
     commands:
       - tapOn: 
           point: 50%, 30%
       - scrollUntilVisible: 
           element:
-           text: "Aventura"
-      - tapOn: "Aventura"
+            text: "Versatile Demo"
+      - tapOn: "Versatile Demo"
 - assertVisible: "Live"
 - tapOn: "Live"
-- assertVisible: "No live stream for this site"
-- assertVisible: "Versatile's devices are no longer transmitting on your jobsite. If that's unexpected, contact us at support@versatile.ai"
+- assertVisible: "This is where you’ll see the live stream from your Versatile devices"
+- assertVisible: "This site has not gone live yet. If that’s not the case, contact us at support@versatile.ai"

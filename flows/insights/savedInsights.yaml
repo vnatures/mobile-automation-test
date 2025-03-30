@@ -7,16 +7,15 @@ tags:
 onFlowStart:
   - runFlow: ../login/internalLogin.yaml
 ---
+- runFlow:
+    file: "../utils/switchToAventura.yaml"
 - tapOn: "Insights"
-- assertVisible: "Saved"
-- assertVisible: "Unread"
-- assertVisible: "All"
-- tapOn: "Saved"
-- assertVisible: "Long installation: Metal stair"
-- assertVisible: "30 mins longer than similar lifts"
-- tapOn: "Long installation: Metal stair"
-- assertVisible: "43m"
-- assertVisible: "13m"
+- runFlow: ../insights/saveInsight.yaml
+- assertVisible: "Long installation: Steel Beam"
+- assertVisible: "24 mins longer than similar lifts"
+- tapOn: "24 mins longer than similar lifts"
+- assertVisible: "51m"
+- assertVisible: "27m"
 - scrollUntilVisible: 
     element: "No comments here yet!"
 # assertVisible: "No comments here yet"
@@ -25,5 +24,7 @@ onFlowStart:
     point: "8%,7%"
 - assertNotVisible: "43m"
 - assertNotVisible: "13m"
-- assertVisible: "Long installation: Metal stair"
-- assertVisible: "30 mins longer than similar lifts"
+- assertVisible: "Long installation: Steel Beam"
+- assertVisible: "24 mins longer than similar lifts"
+- runFlow:
+    file: "../utils/unsaveInsight.yaml"

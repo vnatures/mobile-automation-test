@@ -8,15 +8,11 @@ tags:
   - no-insights
 ---
 - launchApp
-- tapOn: "LOG IN"
+- runFlow: ../login/internalLogin.yaml
+- tapOn: "Profile"
+- tapOn: "Choose a site"
 - tapOn:
-    id: "username"
-- inputText:  ${EX_USER_PLAN_LIVE}
-- tapOn: "Continue"
-- tapOn:
-    id: "password"
-- inputText: ${PASSWORD}
-- "hideKeyboard"
-- tapOn:
-    point: "49%,59%"
+    point: 50%, 30%
+- scrollUntilVisible: 
+    element: "Cherry Creek"
 - assertNotVisible: "Insights"
